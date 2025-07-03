@@ -2,11 +2,10 @@
 import React, { useState, memo, useEffect } from 'react'
 import { Input, FormGroup, InputGroup, FormMessage, Button, Icon } from '@adminjs/design-system'
 
-import { EditPropertyProps } from '../base-property-props.js'
-import { recordPropertyIsEqual } from '../record-property-is-equal.js'
-import { PropertyLabel } from '../utils/property-label/index.js'
-import allowOverride from '../../../hoc/allow-override.js'
-import { useTranslation } from '../../../hooks/index.js'
+import { EditPropertyProps } from '../base-property-props'
+import { recordPropertyIsEqual } from '../record-property-is-equal'
+import { PropertyLabel } from '../utils/property-label'
+import allowOverride from '../../../hoc/allow-override'
 
 const Edit: React.FC<EditPropertyProps> = (props) => {
   const { property, record, onChange } = props
@@ -14,7 +13,6 @@ const Edit: React.FC<EditPropertyProps> = (props) => {
   const [value, setValue] = useState(propValue)
   const error = record.errors && record.errors[property.path]
   const [isInput, setIsInput] = useState(false)
-  const { tm } = useTranslation()
 
   useEffect(() => {
     if (value !== propValue) {
@@ -39,14 +37,15 @@ const Edit: React.FC<EditPropertyProps> = (props) => {
           {...property.props}
         />
         <Button
+          variant={isInput ? 'primary' : 'text'}
           type="button"
           size="icon"
           onClick={() => setIsInput(!isInput)}
         >
-          <Icon icon="Eye" />
+          <Icon icon="View" />
         </Button>
       </InputGroup>
-      <FormMessage>{error && tm(error.message, property.resourceId)}</FormMessage>
+      <FormMessage>{error && error.message}</FormMessage>
     </FormGroup>
   )
 }

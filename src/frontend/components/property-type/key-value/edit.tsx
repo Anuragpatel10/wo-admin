@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Section, FormGroup, FormMessage, Button, Input, Box, Icon } from '@adminjs/design-system'
 
-import { PropertyJSON } from '../../../interfaces/property-json/index.js'
-import { EditPropertyProps } from '../base-property-props.js'
-import { PropertyLabel } from '../utils/property-label/index.js'
-import { flat } from '../../../../utils/flat/index.js'
-import { useTranslation } from '../../../hooks/use-translation.js'
-import { RecordError } from '../../../../backend/utils/errors/index.js'
+import { PropertyJSON } from '../../../interfaces/property-json'
+import { EditPropertyProps } from '../base-property-props'
+import { PropertyLabel } from '../utils/property-label'
+import { flat } from '../../../../utils/flat'
+import { useTranslation } from '../../../hooks/use-translation'
+import { RecordError } from '../../../../backend/utils/errors'
 
 export type EditKeyValuePairProps = {
   onKeyChange: (key: string, newKey: string) => void
@@ -44,7 +44,7 @@ const EditKeyValuePair: React.FC<EditKeyValuePairProps> = (props) => {
             value={currentKey}
             {...(property.props?.keyInputProps ?? {})}
           />
-          {error && <FormMessage>{tm(error.message, property.resourceId)}</FormMessage>}
+          {error && <FormMessage>{error.message}</FormMessage>}
         </FormGroup>
         <FormGroup mb="0px">
           <Input
@@ -65,12 +65,11 @@ const EditKeyValuePair: React.FC<EditKeyValuePairProps> = (props) => {
         type="button"
         size="icon"
         onClick={() => onRemoveItem(currentKey)}
-        variant="contained"
-        color="danger"
+        variant="danger"
         flexGrow={0}
         flexShrink={1}
       >
-        <Icon icon="Trash2" />
+        <Icon icon="TrashCan" />
       </Button>
     </Box>
   )
@@ -167,11 +166,11 @@ const Edit: React.FC<EditPropertyProps> = (props) => {
             error={record.errors[`${property.path}${flat.DELIMITER}${key}`]}
           />
         ))}
-        <Button mt="lg" onClick={addNewKeyValuePair}>
+        <Button mt="lg" variant="primary" onClick={addNewKeyValuePair}>
           {tb('addNewItem', resource.id)}
         </Button>
       </Section>
-      <FormMessage>{error && tm(error.message, property.resourceId)}</FormMessage>
+      <FormMessage>{error && error.message}</FormMessage>
     </FormGroup>
   )
 }

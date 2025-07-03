@@ -1,18 +1,16 @@
 import { PhoneInput, PhoneInputProps, FormGroup, FormMessage } from '@adminjs/design-system'
 import React, { FC, memo, useEffect, useState } from 'react'
 
-import { EditPropertyProps } from '../base-property-props.js'
-import { recordPropertyIsEqual } from '../record-property-is-equal.js'
-import { PropertyLabel } from '../utils/property-label/index.js'
-import allowOverride from '../../../hoc/allow-override.js'
-import { useTranslation } from '../../../hooks/index.js'
+import { EditPropertyProps } from '../base-property-props'
+import { recordPropertyIsEqual } from '../record-property-is-equal'
+import { PropertyLabel } from '../utils/property-label'
+import allowOverride from '../../../hoc/allow-override'
 
 const Edit: FC<EditPropertyProps> = (props) => {
   const { onChange, property, record } = props
   const propValue = record.params?.[property.path] ?? ''
   const [value, setValue] = useState(propValue)
   const error = record.errors?.[property.path]
-  const { tm } = useTranslation()
 
   useEffect(() => {
     if (value !== propValue) {
@@ -34,7 +32,7 @@ const Edit: FC<EditPropertyProps> = (props) => {
         value={value}
         {...property.props as PhoneInputProps}
       />
-      <FormMessage>{error && tm(error.message, property.resourceId)}</FormMessage>
+      <FormMessage>{error && error.message}</FormMessage>
     </FormGroup>
   )
 }
