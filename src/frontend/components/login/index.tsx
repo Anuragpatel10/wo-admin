@@ -2,7 +2,7 @@ import React from 'react'
 import styled, {createGlobalStyle} from 'styled-components'
 
 import {useSelector} from 'react-redux'
-import {Box, H2, H5, Label, MadeWithLove, MessageBox, Text, themeGet,} from '@adminjs/design-system'
+import {Box, H5, MadeWithLove, MessageBox, themeGet,} from '@adminjs/design-system'
 import {useTranslation} from '../../hooks'
 import {ReduxState} from '../../store/store'
 
@@ -34,7 +34,7 @@ export type LoginProps = {
 
 export const Login: React.FC<LoginProps> = (props) => {
     const {action, message} = props
-    const {translateLabel, translateButton, translateProperty, translateMessage} = useTranslation()
+    const {translateMessage} = useTranslation()
     const branding = useSelector((state: ReduxState) => state.branding)
 
     return (
@@ -42,20 +42,6 @@ export const Login: React.FC<LoginProps> = (props) => {
             <GlobalStyle/>
             <Wrapper flex variant="grey">
                 <Box bg="white" height="440px" flex boxShadow="login" width={[1, 2 / 3, 'auto']}>
-                    <Box
-                        bg="primary100"
-                        color="white"
-                        p="x3"
-                        width="380px"
-                        flexGrow={0}
-                        display={['none', 'none', 'block']}
-                        position="relative"
-                    >
-                        <H2 fontWeight="lighter">{translateLabel('loginWelcome')}</H2>
-                        <Text fontWeight="lighter" mt="default">
-                            {translateMessage('loginWelcome')}
-                        </Text>
-                    </Box>
                     <Box
                         as="form"
                         action={action}
@@ -79,7 +65,7 @@ export const Login: React.FC<LoginProps> = (props) => {
                                 variant="danger"
                             />
                         )}
-                        <Label>Please Login Via Partner Portal</Label>
+                        <link href={'https://partner.wobot.ai/'}>Please Login Via Partner Portal</link>
                     </Box>
                 </Box>
                 {branding.withMadeWithLove ? (<Box mt="xxl"><MadeWithLove/></Box>) : null}
