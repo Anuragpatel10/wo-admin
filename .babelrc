@@ -3,24 +3,17 @@
     "@babel/preset-react",
     ["@babel/preset-env", {
       "targets": {
-        "node": "18"
-      },
-      "loose": true,
-      "modules": false
+        "node": "16"
+      }
     }],
-    ["@babel/preset-typescript"]
+    "@babel/preset-typescript"
   ],
-  "plugins": [
-    "@babel/plugin-syntax-import-assertions"
-  ],
+  "plugins": ["babel-plugin-styled-components"],
   "only": ["src/", "spec/"],
   "ignore": [
     "src/frontend/assets/scripts/app-bundle.development.js",
     "src/frontend/assets/scripts/app-bundle.production.js",
     "src/frontend/assets/scripts/global-bundle.development.js",
     "src/frontend/assets/scripts/global-bundle.production.js"
-  ],
-  "generatorOpts": {
-    "importAttributesKeyword": "with"
-  }
+  ]
 }
