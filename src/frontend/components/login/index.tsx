@@ -65,7 +65,7 @@ export const Login: React.FC<LoginProps> = (props) => {
                                 variant="danger"
                             />
                         )}
-                        <link href={'https://partner.wobot.ai/'}>Please Login Via Partner Portal</link>
+                        <link href={'https://partner.wobot.ai/'} title={'Please Login Via Partner Portal'}/>
                     </Box>
                 </Box>
                 {branding.withMadeWithLove ? (<Box mt="xxl"><MadeWithLove/></Box>) : null}
