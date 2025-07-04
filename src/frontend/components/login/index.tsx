@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled, {createGlobalStyle} from 'styled-components'
 
 import {useSelector} from 'react-redux'
@@ -37,6 +37,10 @@ export const Login: React.FC<LoginProps> = (props) => {
     const {translateMessage} = useTranslation()
     const branding = useSelector((state: ReduxState) => state.branding)
 
+    useEffect(() => {
+        console.log(action, "action")
+    }, []);
+
     return (
         <>
             <GlobalStyle/>
@@ -65,7 +69,7 @@ export const Login: React.FC<LoginProps> = (props) => {
                                 variant="danger"
                             />
                         )}
-                        <link href={'https://partner.wobot.ai/'} title={'Please Login Via Partner Portal'}/>
+                        <link href={'https://partner.wobot.ai/'} title={'Please Login Via Partner Portal'} style={{display: 'block'}}/>
                     </Box>
                 </Box>
                 {branding.withMadeWithLove ? (<Box mt="xxl"><MadeWithLove/></Box>) : null}
