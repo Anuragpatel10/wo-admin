@@ -236,7 +236,7 @@ export const Login: React.FC<LoginProps> = (props) => {
                                 )}
 
                                 <Text fontWeight="lighter" mt="default" textAlign="center">
-                                    <a href={'https://partner.wobot.ai/'}>Please Login Via Partner Portal</a>
+                                    <a href={'https://partner-staging.wobot.ai/'}>Please Login Via Partner Portal</a>
                                 </Text>
 
                             </Box>
