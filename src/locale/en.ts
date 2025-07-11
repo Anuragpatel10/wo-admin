@@ -83,7 +83,7 @@ const translations = {
     foundBug_subtitle: 'Raise an issue on our GitHub repo',
     needMoreSolutions_title: 'Need more advanced solutions?',
     needMoreSolutions_subtitle: 'We are here to provide you a beautiful UX/UI design and tailor made software based (not only) on AdminJS',
-    invalidCredentials: 'Wrong email and/or password',
+    invalidCredentials: 'invalidCredentials',
     keyPlaceholder: 'KEY',
     valuePlaceholder: 'VALUE',
     initialKey: 'Key-{{number}}',
